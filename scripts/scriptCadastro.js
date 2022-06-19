@@ -57,6 +57,7 @@ btnEnviar.addEventListener("click", e => {
         console.log(`{Error: Aguardando a validação dos campos}`);
     } else {
         console.log(`{Success: Campos verificados com Sucesso}`);
+        // Aqui será adicionado o redicionamento para a página de tarefa
     }
 
 });
