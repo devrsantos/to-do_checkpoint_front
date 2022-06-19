@@ -37,11 +37,36 @@ const validaEmail = str => {
 
 const validaSenha = str => {
     let senha = str.value;
+    if(senha.length==0 || senha === '' || senha.length<=6){
+        str.classList.remove('success');
+        str.classList.add('error');
+        return false;  
+    } else {
+        str.classList.remove('error');
+        str.classList.add('success');
+        return true; 
+    }
+    
+   
 };
+
+
+
 
 const confirmaSenha = (pass1, pass2) => {
     let senha1 = pass1.value;    
     let senha2 = pass2.value;
+
+    if(senha1!=senha2 || senha2==='' ){
+        pass2.classList.remove('success');
+        pass2.classList.add('error');
+        return false;  
+    }else if(senha1==senha2){
+        pass2.classList.remove('error');
+        pass2.classList.add('success');
+        return true; 
+    }
+    
 };
 
 btnEnviar.addEventListener("click", e => {
