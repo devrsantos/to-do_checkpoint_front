@@ -7,10 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do App</title>
 
-  <!-- ---------------- estilos compartilhados entre login e signup ---------------- !-->
+  <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
   <link rel="stylesheet" href="styles/acesso.css">
-  <script src="https://kit.fontawesome.com/404f1f8d83.js" crossorigin="anonymous"></script>
-  
+
+  <!-- ---------------------- lógica aplicada no registro -------------------- -->
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/signup.js"></script>
 
 </head>
 
@@ -19,90 +21,41 @@
   <div class="left">
     <img src="./assets/pessoa-signup.png" alt="">
   </div>
-
-
   <div class="right">
-
-
     <form>
       <div class="form-header">
         <p>To-Do App</p>
       </div>
 
+      <label>
+        Nome:
+        <input type="text">
+      </label>
+      <label>
+        Sobrenome:
+        <input type="text">
+      </label>
+      <label>
+        Email:
+        <input type="email">
+      </label>
+      <label>
+        Senha:
+        <input type="password">
+      </label>
+      <label>
+        Repetir senha:
+        <input type="password">
+      </label>
 
-
-
-      <div class="formItem">
-        <label id="nome">Nome: </label>
-          <input type="text" id="nome" name="nome">
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-xmark"></i>
-          <div class="error"></div>
-
-          
-      </div>
-
-     
-
-      <div class="formItem">
-        <label id="sobrenome">Sobrenome: </label>
-          <input type="text" id="sobrenome" >
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-xmark"></i>
-          <div class="error"></div>
-      </div>
-     
-
-     
-      <div class="formItem">
-        <label id="email">Email: </label>
-          <input type="email">
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-xmark"></i>
-          <div class="error"></div>
-      </div>
-
-
-
-      <div class="formItem">
-        <label id="senha">Senha:</label>
-          <input type="password" id="senha" name="senha">
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-xmark"></i>
-          <div class="error"></div>
-          <i id="openEye" class="fa-solid fa-eye"></i>
-          <i id="slashedEye" class="fa-solid fa-eye-slash"></i>
-        
-      </div>
-
-
-
-      <div class="formItem">
-        <label id="confirmSenha">Repetir senha: </label>
-          <input type="password" id="confirmSenha" name="confirmSenha">
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-xmark"></i>
-          <div class="error"></div>
-          <i id="openEye" class="fa-solid fa-eye"></i>
-          <i id="slashedEye" class="fa-solid fa-eye-slash"></i> 
-      </div>
-
-      <button class="formButton" type="submit">Criar conta</button>
-
+      <button>Criar conta</button>
 
     </form>
-
     <div class="ingressar">
       <a href="index.html">Já possui conta? Acesse aqui</a>
     </div>
-
-
   </div>
-
-
-  <!-- ---------------------- lógica aplicada no registro -------------------- -->
   <script src="./scripts/scriptCadastro.js"></script>
-
 </body>
 
-</html> -->
+</html>
