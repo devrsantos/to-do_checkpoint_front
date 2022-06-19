@@ -17,6 +17,14 @@ body {
   min-height: 100vh;
 }
 
+.error {
+  border: 1px solid red;
+}
+
+.success {
+  border: 1px solid green;
+}
+
 button {
   border: none;
   border-radius: 3px;
