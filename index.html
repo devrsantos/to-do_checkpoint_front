@@ -9,7 +9,7 @@
 
   <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
   <link rel="stylesheet" href="styles/acesso.css">
-
+  <script src="https://kit.fontawesome.com/09a38e4f32.js" crossorigin="anonymous"></script>
   <!-- ---------------------- lógica aplicada no login ----------------------- -->
   <script src="/scripts/utils.js"></script>
   <script src="/scripts/index.js"></script>
@@ -27,16 +27,23 @@
         <p>To-Do App</p>
       </div>
       <h1>Acessar</h1>
+
       <label>
         Email:
         <input id="inputEmail" type="text">
       </label>
+
       <label>
         Senha:
         <input id="inputPassword" type="password">
+        <i id = "eye" class="fa-solid fa-eye-slash"></i> 
       </label>
 
-      <button type="submit">Acessar</button>
+      <button id="btnEnviar" class= "button" >
+        <span class="text">Acessar</span>
+        <i id="correto" class="fa-solid fa-check"></i>
+        <i id="incorreto" class="fa-solid fa-x"></i>
+      </button>
 
     </form>
     <div class="ingressar">

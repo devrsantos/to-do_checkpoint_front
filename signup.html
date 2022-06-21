@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do App</title>
-
+  <script src="https://kit.fontawesome.com/09a38e4f32.js" crossorigin="anonymous"></script>
   <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
   <link rel="stylesheet" href="styles/acesso.css">
 
@@ -42,13 +42,17 @@
       <label>
         Senha:
         <input type="password" id="inputSenha">
+        <i id = "eye" class="fa-solid fa-eye-slash"></i> 
       </label>
       <label>
         Repetir senha:
         <input type="password" id="inputConfirmaSenha">
       </label>
 
-      <button id="btnEnviar">Criar conta</button>
+      <button id="btnEnviar" class="button">
+        <span class="text">Criar Conta</span>
+        <i  id="check" class="fa-solid "></i>
+      </button>
 
     </form>
     <div class="ingressar">

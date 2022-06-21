@@ -35,6 +35,7 @@ form:after {
 
 
 input {
+  
   width: 100%;
   padding: .4em .5em;
   background-color: var(--app-grey);
@@ -44,7 +45,7 @@ input {
 
 input:focus {
   outline: none;
-  border: 1px solid lightgrey;
+  border: 1px solid rgb(83, 81, 81);
 }
 
 label {
@@ -55,14 +56,7 @@ label {
   font-size: .8em;
 }
 
-button {
-  padding: .5em 3em;
-  background-color: var(--primary);
-  color: white;
-  margin-top: 2em;
-  font-weight: 400;
-  font-size: 1em;
-}
+
 
 .form-header {
   color: grey;
@@ -89,3 +83,54 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+
+/* _________ Animação Button Criar Conta __________ */
+
+button {
+  position: relative;
+  width: 5vw;
+  height: 5vh;
+  background-color: var(--primary);
+  color: white;
+  margin-top: 2em;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.button{
+  transition: width .5s,
+  border-radius .5s;
+}
+
+.button *{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .25s;
+}
+
+#check{
+opacity: 0;
+}
+
+.button:focus{
+  width: 50px;
+  border-radius: 50%;
+}
+
+.button:focus .text {
+  opacity: 0;
+}
+
+ .button:focus #check{
+  opacity: 1;
+  transition:  all linear .5s;
+} 
+
+
+/* .button:focus #incorreto{
+  opacity: 1;
+  transition-delay: .5s;
+} */
