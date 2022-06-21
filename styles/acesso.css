@@ -85,7 +85,7 @@ label {
 }
 
 
-
+/* _________ Animação Button Criar Conta __________ */
 
 button {
   position: relative;
@@ -111,13 +111,12 @@ button {
   transition: opacity .25s;
 }
 
-#icon{
+#check{
 opacity: 0;
 }
 
 .button:focus{
   width: 50px;
-  background-color: forestgreen;
   border-radius: 50%;
 }
 
@@ -125,8 +124,13 @@ opacity: 0;
   opacity: 0;
 }
 
-.button:focus #icon{
+ .button:focus #check{
+  opacity: 1;
+  transition:  all linear .5s;
+} 
+
+
+/* .button:focus #incorreto{
   opacity: 1;
   transition-delay: .5s;
-}
-
+} */
