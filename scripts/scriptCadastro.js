@@ -8,6 +8,8 @@ const icon = document.querySelector("#eye");
 const check = document.querySelector("#check");
 const span = document.querySelector(".text");
 
+
+// _______________ eye_______________________
 icon.addEventListener("click", e =>{
 
    if(icon.className=="fa-solid fa-eye-slash"){
@@ -25,7 +27,7 @@ icon.addEventListener("click", e =>{
 
 })
 
-
+// _______________ nome e sobrenome________________
 const validaString = str => {
     if (str.value.length <= 0) {
         str.classList.remove('success');
@@ -34,11 +36,12 @@ const validaString = str => {
     } else {
         str.classList.remove('error');
         str.classList.add('success');
-        small.innertext='';
         return true;
     }
 };
 
+
+// _______________ email________________
 const validaEmail = str => {
     let email = str.value;
     
@@ -51,11 +54,14 @@ const validaEmail = str => {
     } else {
         str.classList.remove('error');
         str.classList.add('success');
+        str.style.border.color = "green"
         return true;
     }
     
 };
 
+
+// _______________ senha ________________
 const validaSenha = str => {
     let senha = str.value;
     if(senha.length==0 || senha === '' || senha.length<=6){
@@ -65,14 +71,14 @@ const validaSenha = str => {
     } else {
         str.classList.remove('error');
         str.classList.add('success');
+    
         return true; 
     }
     
 };
 
 
-
-
+// _______________ confirma senha ________________
 const confirmaSenha = (pass1, pass2) => {
     let senha1 = pass1.value;    
     let senha2 = pass2.value;
@@ -89,8 +95,11 @@ const confirmaSenha = (pass1, pass2) => {
     
 };
 
+// _______________ Botão criar conta ________________
+
 btnEnviar.addEventListener("click", e => {
     
+    e.preventDefault();
     if (
         !validaString(inputNome) &&
         !validaString(inputSobrenome) &&
@@ -98,41 +107,40 @@ btnEnviar.addEventListener("click", e => {
         !validaSenha(inputSenha) &&
         !confirmaSenha(inputSenha, inputConfirmaSenha)
     ) {
-        e.preventDefault();
         console.log(`{Error: Aguardando a validação dos campos}`);
         check.classList.remove("fa-check");
         check.classList.add("fa-x");
        
     
     } else {
-        e.preventDefault();
         console.log(`{Success: Campos verificados com Sucesso}`);
         check.classList.remove("fa-x");
         check.classList.add("fa-check");
-        span.style.display = none;
+        fetchAPI();
         
         // Aqui será adicionado o redicionamento para a página de tarefa
     }
+
 
 });
 
 
 // ________________________________ post usuário_________________________________
 
+
 function fetchAPI(){
-    fetch('https://ctd-todo-api.herokuapp.com/#/',{
+    fetch('https://ctd-todo-api.herokuapp.com/v1/users/login',{
         method: 'POST',
         headers:{
             'Accept': '*/* , application/json, text/plain',
             'Content-Type': 'application/json'
         },
          body: JSON.stringify({
-            "firstName": "string",
-            "lastName": "string",
-            "email": "string@",
-            "password": "string"
-
-         })
+            firstName: `${inputNome.value}`,
+            lastName: `${inputSobrenome.value}`,
+            email: `${inputEmail.value}`,
+            password: `${inputSenha.value}`,
+         }),
     })
     .then(res => res.json())
     .then(res =>console.log(res))

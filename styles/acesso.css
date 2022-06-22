@@ -134,3 +134,12 @@ opacity: 0;
   opacity: 1;
   transition-delay: .5s;
 } */
+
+.error {
+  border: 1px solid red;
+}
+
+.success {
+  border: 1px solid green;
+  bor
+}
