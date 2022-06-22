@@ -9,6 +9,7 @@
   <script src="https://kit.fontawesome.com/09a38e4f32.js" crossorigin="anonymous"></script>
   <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
   <link rel="stylesheet" href="styles/acesso.css">
+  <link rel="stylesheet" href="styles/common.css">
 
   <!-- ---------------------- lógica aplicada no registro -------------------- -->
   <script src="/scripts/utils.js"></script>
@@ -31,19 +32,23 @@
         Nome:
         <input type="text" id="inputNome">
       </label>
+      
       <label>
         Sobrenome:
         <input type="text" id="inputSobrenome">
       </label>
+
       <label>
         Email:
         <input type="email" id="inputEmail">
       </label>
+
       <label>
         Senha:
         <input type="password" id="inputSenha">
         <i id = "eye" class="fa-solid fa-eye-slash"></i> 
       </label>
+
       <label>
         Repetir senha:
         <input type="password" id="inputConfirmaSenha">
@@ -51,7 +56,7 @@
 
       <button id="btnEnviar" class="button">
         <span class="text">Criar Conta</span>
-        <i  id="check" class="fa-solid "></i>
+        <i   class="fa-solid "></i>
       </button>
 
     </form>
