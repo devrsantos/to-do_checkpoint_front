@@ -87,7 +87,7 @@ label {
 
 /* _________ Animação Button Criar Conta __________ */
 
-button {
+.button {
   position: relative;
   width: 5vw;
   height: 5vh;

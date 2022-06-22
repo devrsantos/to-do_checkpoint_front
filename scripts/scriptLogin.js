@@ -6,7 +6,7 @@ const inputSenha = document.querySelector("#inputPassword");
 const icon = document.querySelector("#eye");
 
 // _______________ eye_______________________
-icon.addEventListener("click", e =>{
+/*icon.addEventListener("click", e =>{
 
     if(icon.className=="fa-solid fa-eye-slash"){
     icon.classList.remove("fa-eye-slash")
@@ -20,11 +20,11 @@ icon.addEventListener("click", e =>{
     inputConfirmaSenha.type="password";
     }
  });
-
+*/
 // ________________________________ post usuário/login_________________________________
 function fetchAPI(){
     fetch('https://ctd-todo-api.herokuapp.com/v1/users',{
-        method: 'POST',
+        method: 'GET',
         headers:{
             'Accept': '*/* , application/json, text/plain',
             'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ function fetchAPI(){
 btnEnviar.addEventListener("click", e => {
     e.preventDefault();
 
-    if (
+   /* if (
         !validaString(inputNome) &&
         !validaString(inputSobrenome) &&
         !validaEmail(inputEmail) &&
@@ -61,4 +61,5 @@ btnEnviar.addEventListener("click", e => {
         
         // Aqui será adicionado o redicionamento para a página de tarefa
     }
+    */
 });

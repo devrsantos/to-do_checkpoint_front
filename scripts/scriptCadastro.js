@@ -95,10 +95,18 @@ const confirmaSenha = (pass1, pass2) => {
     
 };
 
+const validaCampos = () => {
+    validaString(inputNome);
+    validaString(inputSobrenome);
+    validaEmail(inputEmail);
+    validaSenha(inputSenha);
+    confirmaSenha(inputSenha, inputConfirmaSenha);
+};
+
 // _______________ Botão criar conta ________________
 
 btnEnviar.addEventListener("click", e => {
-    
+    validaCampos();
     e.preventDefault();
     if (
         !validaString(inputNome) &&
@@ -129,10 +137,10 @@ btnEnviar.addEventListener("click", e => {
 
 
 function fetchAPI(){
-    fetch('https://ctd-todo-api.herokuapp.com/v1/users/login',{
+    fetch('https://ctd-todo-api.herokuapp.com/v1/users',{
         method: 'POST',
         headers:{
-            'Accept': '*/* , application/json, text/plain',
+            'Accept': '*/* , application/json',
             'Content-Type': 'application/json'
         },
          body: JSON.stringify({
