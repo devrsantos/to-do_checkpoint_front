@@ -5,7 +5,6 @@ const inputEmail = document.querySelector("#inputEmail");
 const inputSenha = document.querySelector("#inputPassword");
 const icon = document.querySelector("#eye");
 
-
 // _______________ eye_______________________
 icon.addEventListener("click", e =>{
 
@@ -20,9 +19,7 @@ icon.addEventListener("click", e =>{
     inputSenha.type="password";
     inputConfirmaSenha.type="password";
     }
-     
- 
- })
+ });
 
 // ________________________________ post usuário/login_________________________________
 function fetchAPI(){
@@ -41,7 +38,6 @@ function fetchAPI(){
     .then(res =>console.log(res))
 }
 
-
  // _______________ Botão criar conta ________________
 
 btnEnviar.addEventListener("click", e => {
@@ -57,8 +53,6 @@ btnEnviar.addEventListener("click", e => {
         console.log(`{Error: Aguardando a validação dos campos}`);
         check.classList.remove("fa-check");
         check.classList.add("fa-x");
-       
-    
     } else {
         console.log(`{Success: Campos verificados com Sucesso}`);
         check.classList.remove("fa-x");
@@ -67,6 +61,4 @@ btnEnviar.addEventListener("click", e => {
         
         // Aqui será adicionado o redicionamento para a página de tarefa
     }
-
-
 });
