@@ -116,14 +116,25 @@ btnEnviar.addEventListener("click", e => {
         !confirmaSenha(inputSenha, inputConfirmaSenha)
     ) {
         console.log(`{Error: Aguardando a validação dos campos}`);
+        
+        /*
+
+            VERIFICAR ESSAS CLASSES NO HTML
+
         check.classList.remove("fa-check");
         check.classList.add("fa-x");
-       
+       */
     
     } else {
         console.log(`{Success: Campos verificados com Sucesso}`);
+
+        /*
+
+                VERIFICAR ESSAS CLASSES NO HTML
+
         check.classList.remove("fa-x");
         check.classList.add("fa-check");
+        */
         fetchAPI();
         
         // Aqui será adicionado o redicionamento para a página de tarefa
@@ -134,7 +145,6 @@ btnEnviar.addEventListener("click", e => {
 
 
 // ________________________________ post usuário_________________________________
-
 
 function fetchAPI(){
     fetch('https://ctd-todo-api.herokuapp.com/v1/users',{
@@ -151,5 +161,7 @@ function fetchAPI(){
          }),
     })
     .then(res => res.json())
-    .then(res =>console.log(res))
+    .then(res => {
+        localStorage.setItem("Token", JSON.stringify(res.jwt));
+    })
 }
