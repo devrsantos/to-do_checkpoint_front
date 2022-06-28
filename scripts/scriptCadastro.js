@@ -143,7 +143,6 @@ btnEnviar.addEventListener("click", e => {
 
 });
 
-
 // ________________________________ post usuário_________________________________
 
 function fetchAPI(){
@@ -160,8 +159,15 @@ function fetchAPI(){
             password: `${inputSenha.value}`,
          }),
     })
-    .then(res => res.json())
     .then(res => {
-        localStorage.setItem("Token", JSON.stringify(res.jwt));
+        res.json();
     })
+    .then(res => {
+        if (res == undefined || res == "undefined") {
+            console.log("El usuario ya se encuentra registrado");
+        } else {
+            localStorage.setItem("Token", JSON.stringify(res.jwt));
+        }
+    });
 }
+

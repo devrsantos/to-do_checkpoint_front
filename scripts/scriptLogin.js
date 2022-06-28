@@ -80,31 +80,6 @@ const validaCampos = () => {
     confirmaSenha(inputSenha, inputConfirmaSenha);
 };
 
-
-// ________________________________ post usuário/login_________________________________
-function fetchAPI(){
-
-    console.log(JSON.stringify({
-        email: `${inputEmail.value}`,
-        password: `${inputSenha.value}`,
-     }));
-
-
-    fetch('https://ctd-todo-api.herokuapp.com/v1/users',{
-        method: 'POST',
-        headers:{
-            'Accept': '*/* , application/json, text/plain',
-            'Content-Type': 'application/json'
-        },
-         body: JSON.stringify({
-            email: `${inputEmail.value}`,
-            password: `${inputSenha.value}`,
-         }),
-    })
-    .then(res => res.json())
-    .then(res =>console.log(res))
-}
-
  // _______________ Botão criar conta ________________
 
 btnEnviar.addEventListener("click", e => {
@@ -124,6 +99,23 @@ btnEnviar.addEventListener("click", e => {
         check.classList.add("fa-check");
         fetchAPI();
         
-        // Aqui será adicionado o redicionamento para a página de tarefa
+        window.location.href = "http://127.0.0.1:5500/tarefas.html";
     }
 });
+
+// ________________________________ post usuário/login_________________________________
+function fetchAPI(){
+    fetch('https://ctd-todo-api.herokuapp.com/v1/users/login',{
+        method: 'POST',
+        headers:{
+            'Accept': '*/* , application/json, text/plain',
+            'Content-Type': 'application/json'
+        },
+         body: JSON.stringify({
+            email: `${inputEmail.value}`,
+            password: `${inputSenha.value}`,
+         }),
+    })
+    .then(res => res.json())
+    .then(res =>console.log(res))
+}
