@@ -99,7 +99,6 @@ btnEnviar.addEventListener("click", e => {
         check.classList.add("fa-check");
         fetchAPI();
         
-        window.location.href = "http://127.0.0.1:5500/tarefas.html";
     }
 });
 
@@ -116,6 +115,22 @@ function fetchAPI(){
             password: `${inputSenha.value}`,
          }),
     })
-    .then(res => res.json())
-    .then(res =>console.log(res))
+    .then(res => {
+        if (res.status == 201) {
+            res.json().then(data => {
+                if (data.jwt != undefined) {
+                    localStorage.setItem("Token", JSON.stringify(data.jwt));
+                    window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                } else {
+                    console.log({"Error": "Não foi possível gerar o Token"});        
+                }
+            });
+        } else if (res.status == 400) {
+            console.log({"Error": "Contraseña incorrecta"});
+        } else if (res.status == 404) {
+            console.log({"Error": "El usuario no existe"});
+        } else {
+            console.log({"Error": "Error del servidor"});
+        }
+    });
 }

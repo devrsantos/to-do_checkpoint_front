@@ -136,8 +136,7 @@ btnEnviar.addEventListener("click", e => {
         check.classList.add("fa-check");
         */
         fetchAPI();
-        
-        // Aqui será adicionado o redicionamento para a página de tarefa
+
     }
 
 
@@ -160,13 +159,19 @@ function fetchAPI(){
          }),
     })
     .then(res => {
-        res.json();
-    })
-    .then(res => {
-        if (res == undefined || res == "undefined") {
-            console.log("El usuario ya se encuentra registrado");
+        if (res.status == 201) {
+            res.json().then(data => {
+                if (data.jwt != undefined) {
+                    localStorage.setItem("Token", JSON.stringify(data.jwt));
+                    window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                } else {
+                    console.log({"Error": "Não foi possível gerar o Token"});        
+                }
+            });
+        } else if (res.status == 400) {
+            console.log({"Error": "El usuario ya se encuentra registrado"});
         } else {
-            localStorage.setItem("Token", JSON.stringify(res.jwt));
+            console.log({"Error": "Error del servidor"});
         }
     });
 }
