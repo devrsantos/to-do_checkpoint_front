@@ -117,24 +117,15 @@ btnEnviar.addEventListener("click", e => {
     ) {
         console.log(`{Error: Aguardando a validação dos campos}`);
         
-        /*
-
-            VERIFICAR ESSAS CLASSES NO HTML
-
+       
         check.classList.remove("fa-check");
         check.classList.add("fa-x");
-       */
+       
     
     } else {
         console.log(`{Success: Campos verificados com Sucesso}`);
-
-        /*
-
-                VERIFICAR ESSAS CLASSES NO HTML
-
         check.classList.remove("fa-x");
         check.classList.add("fa-check");
-        */
         fetchAPI();
 
     }
@@ -162,6 +153,8 @@ function fetchAPI(){
         if (res.status == 201) {
             res.json().then(data => {
                 if (data.jwt != undefined) {
+                    check.classList.remove("fa-x");
+                    check.classList.add("fa-check");
                     localStorage.setItem("Token", JSON.stringify(data.jwt));
                     window.location.href = "http://127.0.0.1:5500/tarefas.html";
                 } else {
@@ -169,7 +162,18 @@ function fetchAPI(){
                 }
             });
         } else if (res.status == 400) {
-            console.log({"Error": "El usuario ya se encuentra registrado"});
+            inputNome.style.borderColor = `red`
+            inputSobrenome.style.borderColor = `red`
+            inputEmail.style.borderColor = `red`
+            inputSenha.style.borderColor = `red`
+            inputConfirmaSenha.style.borderColor = `red`
+            check.classList.remove("fa-check");
+            check.classList.add("fa-x");
+
+            setTimeout(() =>{
+                alert("Error : O usuário já se encontra registrado");
+            },500)
+            
         } else {
             console.log({"Error": "Error del servidor"});
         }
