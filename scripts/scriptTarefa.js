@@ -1,9 +1,7 @@
-const novaTarefa = document.querySelector("#novaTarefa");
+const inputTarefa = document.querySelector("#inputTarefa");
 const btnCriar = document.querySelector("#btnCriar");
-const tarefasPendentes = document.getElementsByClassName("#tarefasPendentes");
-const tarefas = document.getElementByTagName("ul")
-const btnFeito = document.querySelector("#btnFeito");
-const nomeTarefa = document.querySelector(".nome");
+const tarefasPendentes = document.querySelector("#tarefasPendentes");
+
 
 
 
@@ -11,21 +9,13 @@ const nomeTarefa = document.querySelector(".nome");
 
 btnCriar.addEventListener("click", e => {
     e.preventDefault();
-    tarefas.innerHTML+=`
+    tarefasPendentes.innerHTML+=`
     <li class="tarefa">
         <div id="btnFeito" class="not-done"></div>
         <div class="descricao">
-            <p class="nome">${novaTarefa.value}</p>
+            <p class="nome">${inputTarefa.value}</p>
             <p class="timestamp">Criada em: 15/07/21</p>
         </div>
-     </li>`
+     </li>`;
 });
 
-// ____________________ Tarefa Feita ____________________
-
-btnFeito.addEventListener("click", e => {
-    e.preventDefault();
-    tarefas.
-    check.classList.remove("");
-    check.classList.add("fa-check");
-});
