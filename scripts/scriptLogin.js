@@ -49,7 +49,7 @@ const validaSenha = str => {
     } else {
         str.classList.remove('error');
         str.classList.add('success');
-    
+        inputSenha.style.borderColor = `green`
         return true; 
     }
     
@@ -77,9 +77,10 @@ btnEnviar.addEventListener("click", e => {
         check.classList.add("fa-x");
     } else {
         console.log(`{Success: Campos verificados com Sucesso}`);
+        inputSenha.style.borderColor = `green`
         check.classList.remove("fa-x");
         check.classList.add("fa-check");
-        // fetchAPI();
+        fetchAPI();
         
     }
 });
@@ -101,19 +102,38 @@ function fetchAPI(){
         if (res.status == 201) {
             res.json().then(data => {
                 if (data.jwt != undefined) {
-                    localStorage.setItem("Token", JSON.stringify(data.jwt));
-                    window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                    inputSenha.style.borderColor = `green`
+                    setTimeout(() =>{
+                        localStorage.setItem("Token", JSON.stringify(data.jwt));
+                        window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                    },500)
                 } else {
                     console.log({"Error": "Não foi possível gerar o Token"});        
                 }
             });
         } else if (res.status == 400) {
             console.log({"Error": "Contraseña incorrecta"});
+            inputSenha.style.borderColor = `red`
+            check.classList.remove("fa-check");
+            check.classList.add("fa-x");
+            setTimeout(() =>{
+                alert("Error : senha incorreta");
+            },500)
             
         } else if (res.status == 404) {
             console.log({"Error": "El usuario no existe"});
+            inputEmail.style.borderColor = `red`
+            inputSenha.style.borderColor = `red`
+            check.classList.remove("fa-check");
+            check.classList.add("fa-x");
+            setTimeout(() =>{
+                alert("Error : O usuário não existe");
+            },500)
         } else {
             console.log({"Error": "Error del servidor"});
+            setTimeout(() =>{
+                alert("Error : error do servidor");
+            },500)
         }
     });
 }

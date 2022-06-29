@@ -155,6 +155,11 @@ function fetchAPI(){
                 if (data.jwt != undefined) {
                     check.classList.remove("fa-x");
                     check.classList.add("fa-check");
+                    alert("O usuário criado");
+                    setTimeout(() =>{
+                        localStorage.setItem("Token", JSON.stringify(data.jwt));
+                        window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                    },500)
                     localStorage.setItem("Token", JSON.stringify(data.jwt));
                     window.location.href = "http://127.0.0.1:5500/tarefas.html";
                 } else {
