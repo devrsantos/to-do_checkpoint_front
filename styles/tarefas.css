@@ -242,3 +242,14 @@ a {
   0%{ opacity: 0.5;}
   100%{ opacity: 0.8;}
 }
+
+/*__________ icones de edição _______ */
+
+#trash{
+  size: 150%;
+  margin-left: 2%;
+}
+
+#editar{
+  margin-left: 2%;
+}
