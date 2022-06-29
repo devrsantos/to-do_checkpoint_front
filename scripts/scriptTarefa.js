@@ -1,7 +1,8 @@
 const inputTarefa = document.querySelector("#inputTarefa");
 const btnCriar = document.querySelector("#btnCriar");
 const tarefasPendentes = document.querySelector("#tarefasPendentes");
-const trash = document.querySelector("#trash");
+
+
 
 
 // ____________________ Criação de Tarefa ____________________
@@ -15,29 +16,23 @@ btnCriar.addEventListener("click", e => {
             <p class="nome">${inputTarefa.value}</p>
             <p class="timestamp">Criada em: 15/07/21</p>
         </div>
-        <button id="editar" ><i class="fa-solid fa-pen-to-square"></i></button>
-        <button id="trash" ><i class="fa-solid fa-trash-can"></i></button>
      </li>`;
 });
 
-// trash.addEventListener("click",e =>{
-//     e.preventDefault();
-//     alert("funciona"); 
+const getTasks = () => {
+    fetch("",{
+        method: 'GET',
+        headers:{
+            'Accept': '*/* , application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(res => {
 
-// });
+    });
+};
 
-// let getTasks = () => {
+const postTasks = () => {};
 
-// }
+const delTasks = () => {};
 
-// let delTasks = () => {
-
-// }
-// psotost
-// let delTasks = () => {
-
-// }
-// put
-// let delTasks = () => {
-
-// }
+const putTasks = () => {};
