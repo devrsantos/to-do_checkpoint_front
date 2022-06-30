@@ -3,8 +3,11 @@ const btnCriar = document.querySelector("#btnCriar");
 const btnSair = document.querySelector("#closeApp");
 let tarefasPendentes = document.querySelector("#tarefasPendentes");
 let time = new Date().toLocaleString();
+
 let trash;
 let pen;
+let check;
+
 // ____________________ Criação de Tarefa ____________________
 
 btnCriar.addEventListener("click", e => {
@@ -16,7 +19,6 @@ btnSair.addEventListener("click", e =>{
     localStorage.removeItem("Token");
     window.location.href = "http://127.0.0.1:5500/index.html";
 })
-
 
 let gerarListaTarefas = (params) => {
     tarefasPendentes.innerHTML+=`
@@ -30,8 +32,6 @@ let gerarListaTarefas = (params) => {
         <i class="fa-regular fa-pen-to-square" id="editar"></i>
     </li>`;
 };
-
-
 
 // __________________ codigos API ____________________
 const getTasksAll = () => {
@@ -62,7 +62,6 @@ const getTasksAll = () => {
                         putTasks(data[i].id);
                     });
                 });
-                
             });
         }
     });
