@@ -1,5 +1,3 @@
-const getToken = JSON.parse(localStorage.getItem("Token"));
-
 const inputTarefa = document.querySelector("#inputTarefa");
 const btnCriar = document.querySelector("#btnCriar");
 const tarefasPendentes = document.querySelector("#tarefasPendentes");
@@ -21,6 +19,7 @@ btnCriar.addEventListener("click", e => {
 });
 
 const getTasksAll = () => {
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
         method: 'GET',
         headers:{
@@ -36,6 +35,7 @@ const getTasksAll = () => {
 getTasksAll();
 
 const getTasksOne = () => {
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
         method: 'GET',
         headers:{
@@ -49,6 +49,7 @@ const getTasksOne = () => {
 };
 
 const postTasks = () => {
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
         method: 'POST',
         headers:{
@@ -66,6 +67,7 @@ const postTasks = () => {
 };
 
 const delTasks = () => {
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
         method: 'DELETE',
         headers:{
@@ -79,6 +81,7 @@ const delTasks = () => {
 };
 
 const putTasks = () => {
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
         method: 'PUT',
         headers:{
