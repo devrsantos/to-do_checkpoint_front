@@ -35,7 +35,7 @@ let gerarListaTarefas = (params) => {
 
 // __________________ codigos API ____________________
 const getTasksAll = () => {
-    let getToken = localStorage.getItem("Token");
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
         method: 'GET',
         headers:{
@@ -62,7 +62,7 @@ const getTasksAll = () => {
                         putTasks(data[i].id);
                     });
                 });
-
+                
             });
         }
     });
@@ -71,7 +71,7 @@ const getTasksAll = () => {
 getTasksAll();
 
 const getTasksOne = () => {
-    let getToken = localStorage.getItem("Token");
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/${getIdTasks}`,{
         method: 'GET',
         headers:{
@@ -89,7 +89,7 @@ const getTasksOne = () => {
 };
 
 const postTasks = () => {
-    let getToken = localStorage.getItem("Token");
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
         method: 'POST',
         headers:{
@@ -111,7 +111,7 @@ const postTasks = () => {
 };
 
 const delTasks = (params) => {
-    let getToken = localStorage.getItem("Token");
+    let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/${params}`,{
         method: 'DELETE',
         headers:{
@@ -128,9 +128,9 @@ const delTasks = (params) => {
     });
 };
 
-const putTasks = () => {
-    let getToken = localStorage.getItem("Token");
-    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/${getIdTasks}`,{
+const putTasks = params => {
+    let getToken = JSON.parse(localStorage.getItem("Token"));
+    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/${params}`,{
         method: 'PUT',
         headers:{
             'Accept': '*/* , application/json',
@@ -142,7 +142,10 @@ const putTasks = () => {
             "completed": false
         })
     }).then(res => {
-
+        if (res.status == 200) {
+            getTasksAll();
+            window.location.href = "http://127.0.0.1:5500/tarefas.html";
+        }
     });
 };
 
