@@ -1,9 +1,10 @@
+const getToken = JSON.parse(localStorage.getItem("Token"));
+
 const inputTarefa = document.querySelector("#inputTarefa");
 const btnCriar = document.querySelector("#btnCriar");
 const tarefasPendentes = document.querySelector("#tarefasPendentes");
 
-
-
+let getIdTasks;
 
 // ____________________ Criação de Tarefa ____________________
 
@@ -19,20 +20,77 @@ btnCriar.addEventListener("click", e => {
      </li>`;
 });
 
-const getTasks = () => {
-    fetch("",{
+const getTasksAll = () => {
+    fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
         method: 'GET',
         headers:{
             'Accept': '*/* , application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'authorization': `${getToken}`
+        }
+    }).then(res => {
+        console.log(res.status);
+    });
+};
+
+getTasksAll();
+
+const getTasksOne = () => {
+    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
+        method: 'GET',
+        headers:{
+            'Accept': '*/* , application/json',
+            'Content-Type': 'application/json',
+            'authorization': `${getToken}`
         }
     }).then(res => {
 
     });
 };
 
-const postTasks = () => {};
+const postTasks = () => {
+    fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
+        method: 'POST',
+        headers:{
+            'Accept': '*/* , application/json',
+            'Content-Type': 'application/json',
+            'authorization': `${getToken}`
+        },
+        body: JSON.stringify({
+            "description": "",
+            "completed": false
+        })
+    }).then(res => {
 
-const delTasks = () => {};
+    });
+};
 
-const putTasks = () => {};
+const delTasks = () => {
+    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
+        method: 'DELETE',
+        headers:{
+            'Accept': '*/* , application/json',
+            'Content-Type': 'application/json',
+            'authorization': `${getToken}`
+        }
+    }).then(res => {
+
+    });
+};
+
+const putTasks = () => {
+    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
+        method: 'PUT',
+        headers:{
+            'Accept': '*/* , application/json',
+            'Content-Type': 'application/json',
+            'authorization': `${getToken}`
+        },
+        body: JSON.stringify({
+            "description": "",
+            "completed": false
+        })
+    }).then(res => {
+
+    });
+};
