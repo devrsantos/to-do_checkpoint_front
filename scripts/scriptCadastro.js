@@ -158,6 +158,7 @@ function fetchAPI(){
                     alert("O usuário criado");
                     setTimeout(() =>{
                         localStorage.setItem("Token", JSON.stringify(data.jwt));
+                        localStorage.setItem("Nome", JSON.stringify(inputNome.value));
                         window.location.href = "http://127.0.0.1:5500/tarefas.html";
                     },500)
                     localStorage.setItem("Token", JSON.stringify(data.jwt));

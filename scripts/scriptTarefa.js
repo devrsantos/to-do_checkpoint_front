@@ -3,10 +3,16 @@ const btnCriar = document.querySelector("#btnCriar");
 const btnSair = document.querySelector("#closeApp");
 let tarefasPendentes = document.querySelector("#tarefasPendentes");
 let time = new Date().toLocaleString();
+let getNome = localStorage.getItem("Nome");
+document.querySelector("#nome").value = getNome;
 
 let trash;
 let pen;
 let check;
+
+
+
+
 
 // ____________________ Criação de Tarefa ____________________
 
@@ -62,6 +68,17 @@ const getTasksAll = () => {
                         putTasks(data[i].id);
                     });
                 });
+                check = document.querySelectorAll("#btnFeito");
+                let nome = document.querySelectorAll(".nome");
+                check.forEach((ele) => {
+                    ele.addEventListener("click", () => {  
+                        nome.forEach((ju)=>{
+                            ju.classList.toggle("feito"); 
+                         }) 
+                       
+                    });
+                });
+
             });
         }
     });

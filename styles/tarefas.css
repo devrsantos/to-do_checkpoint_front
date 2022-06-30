@@ -257,3 +257,7 @@ a {
 span {
   display: none;
 }
+
+.feito{
+  text-decoration: line-through;
+}
