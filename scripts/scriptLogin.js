@@ -18,7 +18,6 @@ icon.addEventListener("click", e =>{
     }
  });
 
-
 // _______________ email________________
 const validaEmail = str => {
     let email = str.value;
