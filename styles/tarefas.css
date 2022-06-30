@@ -253,3 +253,7 @@ a {
 #editar{
   margin-left: 2%;
 }
+
+span {
+  display: none;
+}
