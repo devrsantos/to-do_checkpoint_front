@@ -1,5 +1,6 @@
 const inputTarefa = document.querySelector("#inputTarefa");
 const btnCriar = document.querySelector("#btnCriar");
+const btnSair = document.querySelector("#closeApp");
 let tarefasPendentes = document.querySelector("#tarefasPendentes");
 let time = new Date().toLocaleString();
 let trash;
@@ -11,6 +12,11 @@ btnCriar.addEventListener("click", e => {
     postTasks();
 });
 
+btnSair.addEventListener("click", e =>{
+    localStorage.removeItem("Token");
+    window.location.href = "http://127.0.0.1:5500/index.html";
+})
+
 
 let gerarListaTarefas = (params) => {
     tarefasPendentes.innerHTML+=`
@@ -21,7 +27,7 @@ let gerarListaTarefas = (params) => {
             <p class="timestamp">Criada em: ${time}</p>
         </div>
         <i class="fa-solid fa-trash-can" id="trash"></i>
-        <i class="fa-regular fa-pen-to-square"></i>
+        <i class="fa-regular fa-pen-to-square" id="editar"></i>
     </li>`;
 };
 
@@ -45,12 +51,18 @@ const getTasksAll = () => {
                     gerarListaTarefas(data[i].description);
                 }
                 trash = document.querySelectorAll("#trash");
-                
                 trash.forEach((ele, i) => {
                     ele.addEventListener("click", () => {
                         delTasks(data[i].id);
                     });
                 });
+                pen = document.querySelectorAll("#editar");
+                pen.forEach((ele, i) => {
+                    ele.addEventListener("click", () => {
+                        putTasks(data[i].id);
+                    });
+                });
+
             });
         }
     });
@@ -118,7 +130,7 @@ const delTasks = (params) => {
 
 const putTasks = () => {
     let getToken = localStorage.getItem("Token");
-    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/{${getIdTasks}}`,{
+    fetch(`https://ctd-todo-api.herokuapp.com/v1/tasks/${getIdTasks}`,{
         method: 'PUT',
         headers:{
             'Accept': '*/* , application/json',
@@ -126,7 +138,7 @@ const putTasks = () => {
             'authorization': `${getToken}`
         },
         body: JSON.stringify({
-            "description": "",
+            "description":`${inputTarefa.value}` ,
             "completed": false
         })
     }).then(res => {
