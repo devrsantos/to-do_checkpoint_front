@@ -10,12 +10,7 @@ let trash;
 let pen;
 let check;
 
-
-
-
-
 // ____________________ Criação de Tarefa ____________________
-
 btnCriar.addEventListener("click", e => {
     e.preventDefault();
     postTasks();
@@ -24,7 +19,7 @@ btnCriar.addEventListener("click", e => {
 btnSair.addEventListener("click", e =>{
     localStorage.removeItem("Token");
     window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/index.html";
-})
+});
 
 let gerarListaTarefas = (params) => {
     tarefasPendentes.innerHTML+=`
