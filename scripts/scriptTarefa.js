@@ -8,16 +8,25 @@ let getIdTasks;
 
 btnCriar.addEventListener("click", e => {
     e.preventDefault();
-    tarefasPendentes.innerHTML+=`
-    <li class="tarefa">
-        <div id="btnFeito" class="not-done"></div>
-        <div class="descricao">
-            <p class="nome">${inputTarefa.value}</p>
-            <p class="timestamp">Criada em: 15/07/21</p>
-        </div>
-     </li>`;
+    alert("julia");
+    postTasks();
+    // tarefasPendentes.innerHTML+=`
+    // <li class="tarefa">
+    //     <div id="btnFeito" class="not-done"></div>
+    //     <div class="descricao">
+    //         <p class="nome">${inputTarefa.value}</p>
+    //         <p class="timestamp">Criada em: 15/07/21</p>
+    //     </div>
+    //  </li>`;
 });
 
+
+
+
+
+
+
+// __________________ codigos API ____________________
 const getTasksAll = () => {
     let getToken = JSON.parse(localStorage.getItem("Token"));
     fetch("https://ctd-todo-api.herokuapp.com/v1/tasks",{
@@ -44,7 +53,7 @@ const getTasksOne = () => {
             'authorization': `${getToken}`
         }
     }).then(res => {
-
+        console.log(res.status);
     });
 };
 
@@ -58,11 +67,11 @@ const postTasks = () => {
             'authorization': `${getToken}`
         },
         body: JSON.stringify({
-            "description": "",
+            "description": `${inputTarefa.value}`,
             "completed": false
         })
     }).then(res => {
-
+        console.log(res.status);
     });
 };
 
