@@ -159,10 +159,10 @@ function fetchAPI(){
                     setTimeout(() =>{
                         localStorage.setItem("Token", JSON.stringify(data.jwt));
                         localStorage.setItem("Nome", JSON.stringify(inputNome.value));
-                        window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                        window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/tarefas.html";
                     },500)
                     localStorage.setItem("Token", JSON.stringify(data.jwt));
-                    window.location.href = "http://127.0.0.1:5500/tarefas.html";
+                    window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/tarefas.html";
                 } else {
                     console.log({"Error": "Não foi possível gerar o Token"});        
                 }

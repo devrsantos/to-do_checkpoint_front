@@ -23,7 +23,7 @@ btnCriar.addEventListener("click", e => {
 
 btnSair.addEventListener("click", e =>{
     localStorage.removeItem("Token");
-    window.location.href = "http://127.0.0.1:5500/index.html";
+    window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/index.html";
 })
 
 let gerarListaTarefas = (params) => {
@@ -121,7 +121,7 @@ const postTasks = () => {
         console.log(res.status);
         if (res.status == 201) {
             getTasksAll();
-            window.location.href = "http://127.0.0.1:5500/tarefas.html";
+            window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/tarefas.html";
         }
     });
 };
@@ -139,7 +139,7 @@ const delTasks = (params) => {
         console.log(res.status);
         if (res.status == 200) {
             getTasksAll();
-            window.location.href = "http://127.0.0.1:5500/tarefas.html";
+            window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/tarefas.html";
         }
     });
 };
@@ -160,7 +160,7 @@ const putTasks = params => {
     }).then(res => {
         if (res.status == 200) {
             getTasksAll();
-            window.location.href = "http://127.0.0.1:5500/tarefas.html";
+            window.location.href = "https://devrsantos.github.io/to-do_checkpoint_front/tarefas.html";
         }
     });
 };
